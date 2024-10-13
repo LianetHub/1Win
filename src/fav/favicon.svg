@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="21" height="32"><svg width="21" height="32" viewBox="0 0 21 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M20.7366 7.62009C21.3066 4.82559 20.2806 2.83609 18.4224 1.52509C16.7238 0.386585 14.5806 0.214085 12.3234 1.35259L2.88424 5.63059C0.513035 6.71159 -0.501564 9.50609 0.513035 11.8406C1.58464 14.2326 4.29784 15.2561 6.66903 14.2326L7.91163 13.6576L5.88243 24.7781C5.31243 28.1361 7.46703 30.8731 10.4082 31.4481C13.5204 32.0231 16.5642 29.9646 17.0772 26.8251L20.7366 7.62009Z" fill="url(#paint0_linear_2001_79)"></path>
+<defs>
+<linearGradient id="SvgjsLinearGradient1070" x1="10.5036" y1="35.8156" x2="10.5036" y2="-0.144795" gradientUnits="userSpaceOnUse">
+<stop stop-color="#0167CA"></stop>
+<stop offset="1" stop-color="#38A8FA"></stop>
+</linearGradient>
+</defs>
+</svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
+@media (prefers-color-scheme: dark) { :root { filter: none; } }
+</style></svg>
