@@ -1,3 +1,6 @@
+import { slide } from './slideToggle.js'
+slide()
+
 
 export const spollers = () => {
 
@@ -139,4 +142,3 @@ export const spollers = () => {
     }
 
 }
-

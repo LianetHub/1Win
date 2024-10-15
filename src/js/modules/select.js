@@ -1,67 +1,63 @@
 export const select = () => {
-    const toggleDropdown = (dropdown, isOpen) => {
-        const btn = dropdown.querySelector('.dropdown__button');
-        const list = dropdown.querySelector('.dropdown__list');
-        btn.setAttribute('aria-expanded', isOpen);
-        list.setAttribute('aria-hidden', !isOpen);
-        if (isOpen) {
-            dropdown.classList.add('visible');
-            btn.classList.add('active');
-        } else {
-            dropdown.classList.remove('visible');
-            btn.classList.remove('active');
-        }
-    };
+    document.querySelectorAll(".dropdown").forEach(function (dropdownWrapper) {
+        const dropdownBtn = dropdownWrapper.querySelector(".dropdown__button");
+        const dropdownList = dropdownWrapper.querySelector(".dropdown__list");
+        const dropdownItems = dropdownList.querySelectorAll(".dropdown__list-item");
+        const dropdownInput = dropdownWrapper.querySelector(".dropdown__input");
 
-    const setupDropdown = dropdown => {
-        const dropdownBtn = dropdown.querySelector('.dropdown__button');
-        const dropdownList = dropdown.querySelector('.dropdown__list');
-        const dropdownItems = dropdownList.querySelectorAll('.dropdown__list-item');
-        const dropdownInput = dropdown.querySelector('.dropdown__input');
 
-        // Setting ARIA attributes
-        dropdown.setAttribute('role', 'listbox');
-        dropdownItems.forEach(item => item.setAttribute('role', 'option'));
-
-        dropdownBtn.addEventListener('click', () => {
-            const isOpen = dropdownBtn.getAttribute('aria-expanded') === 'true';
-            toggleDropdown(dropdown, !isOpen);
-        });
-
-        dropdownItems.forEach(item => {
-            item.addEventListener('click', e => {
-                dropdownItems.forEach(el => {
-                    el.classList.remove('active');
-                    el.removeAttribute('aria-checked');
-                });
-                item.classList.add('active');
-                item.setAttribute('aria-checked', 'true');
-                dropdownBtn.innerHTML = item.innerHTML;
-                dropdownInput.value = item.dataset.value;
-                toggleDropdown(dropdown, false);
-                dropdownInput.dispatchEvent(new Event('change'));
-            });
-        });
-    };
-
-    const closeAllDropdownsOnClickOutside = e => {
-        document.querySelectorAll('.dropdown.visible').forEach(dropdown => {
-            if (!dropdown.contains(e.target)) {
-                toggleDropdown(dropdown, false);
+        dropdownBtn.addEventListener("click", function () {
+            if (dropdownBtn.classList.contains('dropdown__button_active')) {
+                hiddenDropdown()
+            } else {
+                openDropdown()
             }
         });
-    };
 
-    const closeAllDropdownsOnEscape = e => {
-        if (e.key === 'Escape') {
-            document.querySelectorAll('.dropdown.visible').forEach(dropdown => {
-                toggleDropdown(dropdown, false);
+        dropdownItems.forEach(function (listItem) {
+
+            listItem.addEventListener("click", function (e) {
+                dropdownItems.forEach(function (el) {
+                    el.classList.remove("dropdown__list-item_active");
+                    el.removeAttribute('aria-checked');
+                });
+                e.target.classList.add("dropdown__list-item_active");
+                e.target.setAttribute('aria-checked', true);
+                dropdownBtn.innerHTML = this.innerHTML;
+                dropdownInput.value = this.dataset.value;
+                hiddenDropdown();
+
+                let event = new Event('change');
+                dropdownInput.dispatchEvent(event);
             });
-        }
-    };
+        });
 
-    // Initialization
-    document.querySelectorAll('.dropdown').forEach(setupDropdown);
-    document.addEventListener('click', closeAllDropdownsOnClickOutside);
-    document.addEventListener('keydown', closeAllDropdownsOnEscape);
+
+        document.addEventListener("click", function (e) {
+            if (e.target.closest(".dropdown__form") || e.target.closest('.dropdown__list-more-btn')) return;
+            if (e.target !== dropdownBtn) {
+                hiddenDropdown()
+            }
+        });
+
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Tab" || e.key === "Escape") {
+                hiddenDropdown()
+            }
+        });
+
+        function hiddenDropdown() {
+            dropdownBtn.classList.remove("dropdown__button_active");
+            dropdownList.classList.remove("dropdown__list_visible");
+            dropdownBtn.setAttribute('aria-expanded', false);
+            dropdownList.setAttribute('aria-hidden', true);
+        }
+
+        function openDropdown() {
+            dropdownBtn.classList.toggle("dropdown__button_active");
+            dropdownList.classList.toggle("dropdown__list_visible");
+            dropdownBtn.setAttribute('aria-expanded', true);
+            dropdownList.setAttribute('aria-hidden', false);
+        }
+    });
 };

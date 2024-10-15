@@ -1,5 +1,5 @@
 %ic {
-	font-family: "icons";
+	font-family: 'icons';
 	font-style: normal;
 	font-weight: normal;
 	font-variant: normal;
@@ -10,17 +10,56 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-[class^="icon-"],
-[class*=" icon-"] {
+[class^='icon-'],
+[class*=' icon-'] {
 	&:before {
 		@extend %ic;
 		display: block;
 	}
 }
 
-.icon-location:before {
-	content: "\e900";
+.icon-arrow:before {
+	content: '\e900';
 }
-.icon-phone:before {
-	content: "\e901";
+.icon-chevron:before {
+	content: '\e901';
+}
+.icon-close:before {
+	content: '\e902';
+}
+.icon-cloud:before {
+	content: '\e903';
+}
+.icon-copy:before {
+	content: '\e904';
+}
+.icon-instagram:before {
+	content: '\e90d';
+}
+.icon-lock:before {
+	content: '\e90e';
+}
+.icon-mail:before {
+	content: '\e90f';
+}
+.icon-mark:before {
+	content: '\e910';
+}
+.icon-next:before {
+	content: '\e911';
+}
+.icon-play:before {
+	content: '\e912';
+}
+.icon-prev:before {
+	content: '\e913';
+}
+.icon-star:before {
+	content: '\e914';
+}
+.icon-telegram:before {
+	content: '\e915';
+}
+.icon-trash:before {
+	content: '\e916';
 }

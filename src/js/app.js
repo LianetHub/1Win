@@ -1,7 +1,7 @@
 "use strict";
 
 
-import * as devFunctions from './modules/functions.js';
+import * as devFunctions from "./modules/functions.js";
 
 //  init Fancybox
 if (typeof Fancybox !== "undefined" && Fancybox !== null) {
@@ -11,120 +11,231 @@ if (typeof Fancybox !== "undefined" && Fancybox !== null) {
     });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
 
-    devFunctions.OS();
-    devFunctions.isWebp();
+document.addEventListener("DOMContentLoaded", () => {
+
+    // devFunctions.OS();
+    devFunctions.spollers();
+    devFunctions.select();
 
 
-    // event handlers
+    /* menu vars */
+    const iconMenu = document.querySelector(".icon-menu");
+    const menuBody = document.querySelector(".menu");
+    const header = document.querySelector(".header");
+    const body = document.body;
 
-    document.addEventListener('click', (e) => {
-
+    /* event handlers */
+    document.addEventListener("click", (e) => {
         const target = e.target;
-        const header = document.querySelector('.header');
 
-        if (target.closest('.icon-menu')) {
-            header.classList.toggle('open-menu');
+
+        if (target.closest(".icon-menu") || target.classList.contains('menu')) {
+            getMenu();
+
+            hideLangChoising();
         }
 
-        if (header.classList.contains('open-menu') && !target.closest('.menu')) {
-            header.classList.remove('open-menu');
+        // copy btn
+        if (target.closest('[data-copy]')) {
+            let copyBtn = target.closest('[data-copy]');
+            copyToClipboard(copyBtn);
         }
+
+        if (target.closest('.menu__lang-btn')) {
+            document.querySelector('.menu__lang-btn').classList.toggle('open');
+            document.querySelector('.menu__lang-content').classList.toggle('open');
+        }
+
+        if (target.closest('.menu__lang-item')) {
+            selectLanguage(target.closest('.menu__lang-item'));
+        }
+
+        if (target.classList.contains('menu__btn')) {
+            target.classList.toggle('open');
+            target.nextElementSibling.classList.toggle('open');
+        }
+
+
     });
 
+    function selectLanguage(langItem) {
+        let currentLangBlock = document.querySelector('.menu__lang-current');
+        let currentFlagBlock = document.querySelector('.menu__lang-flag');
 
-    const stars = document.querySelectorAll('.main__light');
-
-    stars.forEach((star) => {
-
-        star.style.position = 'absolute';
-        star.style.top = `${Math.random() * 100}%`;
-        star.style.left = `${Math.random() * 100}%`;
-        star.style.width = `${Math.random() * 10 + 50}px`;
+        let selectedFlag = langItem.querySelector('.menu__lang-icon');
+        let selectedValue = langItem.dataset.lang;
 
 
-        gsap.to(star, {
-            opacity: Math.random(),
-            repeat: -1,
-            yoyo: true,
-            duration: Math.random() * 2 + 1,
-            ease: 'power2.inOut'
+
+        document.querySelectorAll('.menu__lang-item').forEach(langBtn => {
+            langBtn.classList.remove('selected');
         });
-    });
+
+        langItem.classList.add('selected');
+        currentLangBlock.innerHTML = selectedValue;
+        currentFlagBlock.innerHTML = selectedFlag.innerHTML;
+
+        hideLangChoising()
+
+    }
+
+    function hideLangChoising() {
+        document.querySelector('.menu__lang-btn').classList.remove('open');
+        document.querySelector('.menu__lang-content').classList.remove('open')
+    }
 
 
-    gsap.timeline({
-        ease: 'power2.out',
-        duration: 1
-    })
-        .from('.main__title', {
-            opacity: 0,
-            y: 50,
-            delay: 0.25
-        })
-        .from('.main__astro', {
-            opacity: 0,
-        })
-        .from('.main__footer', {
-            opacity: 0,
-            y: 20,
-        })
-        .from('.main__sidebar', {
-            opacity: 0,
-            y: 50
-        },)
+    function getMenu() {
+        devFunctions.toggleLocking();
+        iconMenu.classList.toggle("active");
+        header.classList.toggle("active");
+        menuBody.classList.toggle("active");
+    }
+
+    function copyToClipboard(copyBtn) {
 
 
+        let template = document.createElement('input');
+        template.classList.add('hidden');
+        template.setAttribute('type', "text");
+        template.value = copyBtn.previousElementSibling.textContent;
 
-    gsap.registerPlugin(MotionPathPlugin);
+        let tooltip = document.createElement('div');
+        tooltip.classList.add('tooltip');
+        tooltip.textContent = "Скопировано"
 
-    const circles = gsap.utils.toArray(".circle-block");
 
-    circles.forEach((circle, index) => {
+        copyBtn.appendChild(tooltip);
+        tooltip.classList.add('visible');
 
-        const startPosition = index * (1 / circles.length);
-        const endPosition = startPosition + 1;
-        const totalDuration = 50;
+        document.body.appendChild(template);
+        template.select();
+        document.execCommand("copy");
+        template.remove();
+        setTimeout(() => {
+            tooltip.remove()
+        }, 400)
 
-        gsap.to(circle, {
-            duration: totalDuration,
-            repeat: -1,
-            motionPath: {
-                path: "#orbit",
-                align: "#orbit",
-                start: startPosition,
-                end: endPosition,
-                alignOrigin: [0.5, 0.5],
-            },
-            ease: "none",
-            onUpdate: function () {
+    }
 
-                const time = gsap.getProperty(this, "time");
-                const progress = time / totalDuration;
-
-                const isInSecondHalf = (progress + startPosition) % 1 >= 0.5;
-
-                if (isInSecondHalf) {
-                    circle.parentNode.prepend(circle);
-                } else {
-                    circle.parentNode.append(circle);
-                }
+    const sliderOptions = {
+        slidesPerView: "auto",
+        spaceBetween: 10,
+        watchOverflow: true,
+        grabCursor: true,
+        breakpoints: {
+            767.98: {
+                spaceBetween: 20,
             }
-        });
-    });
+        }
+    };
+
+    if (document.querySelector('.info__slider')) {
+        new Swiper('.info__slider', sliderOptions)
+    }
+
+    if (document.querySelector('.reviews__slider')) {
+        new Swiper('.reviews__slider', sliderOptions)
+    }
+
+    if (document.querySelector('.benefits__slider')) {
+        new Swiper('.benefits__slider', sliderOptions)
+    }
+
+    if (document.querySelector('.articles__slider')) {
+        new Swiper('.articles__slider', {
+            slidesPerView: "auto",
+            spaceBetween: 20,
+            watchOverflow: true,
+            grabCursor: true,
+        })
+    }
+
+    if (document.querySelector('.partners__slider')) {
+        new Swiper('.partners__slider', sliderOptions)
+    }
 
 
 
+});
 
 
+// slideToggle
 
+HTMLElement.prototype.slideToggle = function (duration, callback) {
+    if (this.clientHeight === 0) {
+        _s(this, duration, callback, true);
+    } else {
+        _s(this, duration, callback);
+    }
+};
 
+HTMLElement.prototype.slideUp = function (duration, callback) {
+    _s(this, duration, callback);
+};
 
+HTMLElement.prototype.slideDown = function (duration, callback) {
+    _s(this, duration, callback, true);
+};
 
+function _s(el, duration, callback, isDown) {
 
-})
+    if (typeof duration === 'undefined') duration = 400;
+    if (typeof isDown === 'undefined') isDown = false;
 
+    el.style.overflow = "hidden";
+    if (isDown) el.style.display = "block";
 
+    var elStyles = window.getComputedStyle(el);
 
+    var elHeight = parseFloat(elStyles.getPropertyValue('height'));
+    var elPaddingTop = parseFloat(elStyles.getPropertyValue('padding-top'));
+    var elPaddingBottom = parseFloat(elStyles.getPropertyValue('padding-bottom'));
+    var elMarginTop = parseFloat(elStyles.getPropertyValue('margin-top'));
+    var elMarginBottom = parseFloat(elStyles.getPropertyValue('margin-bottom'));
 
+    var stepHeight = elHeight / duration;
+    var stepPaddingTop = elPaddingTop / duration;
+    var stepPaddingBottom = elPaddingBottom / duration;
+    var stepMarginTop = elMarginTop / duration;
+    var stepMarginBottom = elMarginBottom / duration;
+
+    var start;
+
+    function step(timestamp) {
+
+        if (start === undefined) start = timestamp;
+
+        var elapsed = timestamp - start;
+
+        if (isDown) {
+            el.style.height = (stepHeight * elapsed) + "px";
+            el.style.paddingTop = (stepPaddingTop * elapsed) + "px";
+            el.style.paddingBottom = (stepPaddingBottom * elapsed) + "px";
+            el.style.marginTop = (stepMarginTop * elapsed) + "px";
+            el.style.marginBottom = (stepMarginBottom * elapsed) + "px";
+        } else {
+            el.style.height = elHeight - (stepHeight * elapsed) + "px";
+            el.style.paddingTop = elPaddingTop - (stepPaddingTop * elapsed) + "px";
+            el.style.paddingBottom = elPaddingBottom - (stepPaddingBottom * elapsed) + "px";
+            el.style.marginTop = elMarginTop - (stepMarginTop * elapsed) + "px";
+            el.style.marginBottom = elMarginBottom - (stepMarginBottom * elapsed) + "px";
+        }
+
+        if (elapsed >= duration) {
+            el.style.height = "";
+            el.style.paddingTop = "";
+            el.style.paddingBottom = "";
+            el.style.marginTop = "";
+            el.style.marginBottom = "";
+            el.style.overflow = "";
+            if (!isDown) el.style.display = "none";
+            if (typeof callback === 'function') callback();
+        } else {
+            window.requestAnimationFrame(step);
+        }
+    }
+
+    window.requestAnimationFrame(step);
+}

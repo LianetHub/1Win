@@ -1,7 +1,6 @@
 export const beforeSlider = () => {
 
     const sliders = document.querySelectorAll('.before-slider');
-    if (sliders.length === 0) return;
 
     sliders.forEach(slider => {
         const sliderInput = slider.querySelector('.before-slider__input');
@@ -11,9 +10,10 @@ export const beforeSlider = () => {
         ["input", "change"].forEach((type) => {
             sliderInput.addEventListener(type, (e) => {
                 const sliderPos = e.target.value;
-
+                // foreground.style.width = `${sliderPos}%`;
                 foreground.style.setProperty('--value', `${sliderPos}%`);
-                sliderBtn.style.left = `calc(${sliderPos}% - ${sliderBtn.getBoundingClientRect().width / 2}px)`;
+                // foreground.style.cssText = `--value: ${sliderPos}%`;
+                sliderBtn.style.left = `calc(${sliderPos}% - 15px)`;
             });
         });
     })

@@ -1,6 +1,6 @@
 export const floatingLabels = () => {
 
-    let floatingInputs = document.querySelectorAll('.form__field > .form__input, .form__field > .form__textarea');
+    let floatingInputs = document.querySelectorAll('.form__field > .form__input, .form__textarea');
 
 
     floatingInputs.forEach(input => {

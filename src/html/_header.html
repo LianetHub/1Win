@@ -1,18 +1,113 @@
 <header class="header">
     <div class="header__container">
+        <a href="/" class="header__logo">
+            <img src="@img/logo.svg" alt="logo">
+        </a>
         <div class="header__menu menu">
-            <button type="button" aria-label="Открыть меню" class="header__menu-btn icon-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <nav class="menu__body">
-                <ul class="menu__list">
-                    <li class="menu__item"><a href="" class="menu__link">FAQ</a></li>
-                    <li class="menu__item"><a href="" class="menu__link">Служба поддержки</a></li>
-                    <li class="menu__item"><a href="" class="menu__link">Отзывы</a></li>
-                </ul>
-            </nav>
+            <div class="menu__content">
+                <nav aria-label="open menu" class="menu__body">
+                    <ul class="menu__list">
+                        <li class="menu__item"><a href="" class="menu__link">Главная</a></li>
+                        <li class="menu__item">
+                            <button class="menu__btn icon-chevron">Скачать приложение</button>
+                            <ul class="submenu">
+                                <li class="submenu__item">
+                                    <a href="" class="submenu__link">Версия для Android</a>
+                                </li>
+                                <li class="submenu__item">
+                                    <a href="" class="submenu__link">Версия для iOS</a>
+                                </li>
+                                <li class="submenu__item">
+                                    <a href="" class="submenu__link">Версия</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu__item"><a href="" class="menu__link">Poker</a></li>
+                        <li class="menu__item"><a href="" class="menu__link">Казино</a></li>
+                        <li class="menu__item">
+                            <button class="menu__btn icon-chevron">1win игры</button>
+                            <ul class="submenu">
+                                <li class="submenu__item">
+                                    <a href="" class="submenu__link">Все игры</a>
+                                </li>
+                                <li class="submenu__item">
+                                    <a href="" class="submenu__link">Авиатор</a>
+                                </li>
+                                <li class="submenu__item">
+                                    <a href="" class="submenu__link">Lucky Jet</a>
+                                </li>
+                                <li class="submenu__item">
+                                    <a href="" class="submenu__link">Plinko</a>
+                                </li>
+                                <li class="submenu__item">
+                                    <a href="" class="submenu__link">1win shutle</a>
+                                </li>
+                                <li class="submenu__item">
+                                    <a href="" class="submenu__link">Mines</a>
+                                </li>
+                                <li class="submenu__item">
+                                    <a href="" class="submenu__link">Book of Dead</a>
+                                </li>
+                                <li class="submenu__item">
+                                    <a href="" class="submenu__link">Jet X</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="menu__lang">
+                    <button type="button" class="menu__lang-btn icon-chevron">
+                        <span class="menu__lang-current">RU</span>
+                        <span class="menu__lang-flag">
+                            <img src="@img/flags/rus.svg" alt="rus">
+                        </span>
+                    </button>
+                    <div class="menu__lang-content">
+                        <a href="/" class="menu__lang-logo">
+                            <img src="@img/logo.svg" alt="logo">
+                        </a>
+                        <div class="menu__lang-caption title">
+                            Выберите язык
+                        </div>
+                        <ul class="menu__lang-list">
+                            <li data-lang="RU" class="menu__lang-item selected">
+                                <div class="menu__lang-icon">
+                                    <img src="@img/flags/rus.svg" alt="rus">
+                                </div>
+                                <div class="menu__lang-body">
+                                    <div class="menu__lang-value">
+                                        Русский
+                                    </div>
+                                    <div class="menu__lang-translate">
+                                        Русский
+                                    </div>
+                                </div>
+                            </li>
+                            <li data-lang="EN" class="menu__lang-item">
+                                <div class="menu__lang-icon">
+                                    <img src="@img/flags/eng.svg" alt="eng">
+                                </div>
+                                <div class="menu__lang-body">
+                                    <div class="menu__lang-value">
+                                        English
+                                    </div>
+                                    <div class="menu__lang-translate">
+                                        Английский
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="menu__copy">
+                    1Win © 2023
+                </div>
+            </div>
         </div>
+        <button type="button" aria-label="open menu" class="header__menu-btn icon-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </div>
 </header>

@@ -3,110 +3,164 @@ export const formSubmit = () => {
 	forms.forEach((form) => {
 		form.addEventListener("submit", formSend);
 
-		if (!form.querySelector('[name="captcha"]')) {
-			form.insertAdjacentHTML("beforeend", `<input type="hidden" name="captcha" value="${navigator.userAgent}"/>`);
+		if (!form.querySelector('[name="capcha"]')) {
+			form.insertAdjacentHTML(
+				"beforeend",
+				'<input type="hidden" name="capcha" value="' +
+				navigator.userAgent +
+				'"/>'
+			);
 		}
 	});
 
-	document.addEventListener("input", handleFormInput);
-
 	async function formSend(e) {
-		e.preventDefault();
 		const form = e.target;
 		const currentUrl = form.getAttribute("action");
-		const error = formValidate(form);
+
+		e.preventDefault();
+
+		let error = formValidate(form);
+
+		let formData = new FormData(form);
 
 		if (error === 0) {
-			try {
+			/*form send script*/
+			form.classList.add("_sending");
+			let response = await fetch(currentUrl, {
+				method: "POST",
+				body: formData,
+			});
 
-				form.classList.add("_sending");
-
-				const response = await fetch(currentUrl, {
-					method: "POST",
-					body: new FormData(form),
-				});
-
-				if (!response.ok) throw new Error("Укажите URL, куда будет запрос в атрибуте action у формы");
-
+			if (response.ok) {
+				let result = await response.json();
 				form.reset();
-				closeAndShowSuccessModal();
+				form.classList.remove("_sending");
 
-			} catch (error) {
+				console.log('succes');
+				getSucces(form);
 
-				alert(error.message);
-				closeAndShowSuccessModal();
-
-			} finally {
+				// if (result.status) {
+				// 	succes(result);
+				// } else {
+				// 	fail(result.message);
+				// }
+			} else {
+				// fail();
+				console.log('fail');
+				// getSucces(form);
 				form.classList.remove("_sending");
 			}
-		}
-	}
-
-	function handleFormInput(e) {
-		const { target } = e;
-		if (target.classList.contains('_error')) {
-			formRemoveError(target);
+			/*form send script*/
+		} else {
+			/*required fields*/
+			/*required fields*/
 		}
 	}
 
 	function formValidate(form) {
 		let error = 0;
-		const formReq = form.querySelectorAll("[data-required]");
+		let formReq = form.querySelectorAll("[data-required]");
 
-		formReq.forEach(input => {
+		for (let index = 0; index < formReq.length; index++) {
+			const input = formReq[index];
 			formRemoveError(input);
 
-			if (input.matches("[name='email']") && !emailTest(input.value)) {
-				formAddError(input);
-				error++;
-			} else if (input.matches("[type='checkbox']") && !input.checked) {
-				formAddError(input);
-				error++;
-			} else if (input.value.trim() === "" || (input.matches("[name='message']") && input.value.trim().length < 1)) {
-				formAddError(input);
-				error++;
-			} else if (input.matches("[type='tel']") && !phoneTest(input.value)) {
-				formAddError(input);
-				error++;
+			if (input.name == "email") {
+				if (!emailTest(input)) {
+					formAddError(input);
+					error++;
+				}
+			} else if (input.name == "name") {
+				if (input.value === "") {
+					formAddError(input);
+					error++;
+				}
+			} else if (input.name == "message") {
+				if (input.value.length < 1) {
+					formAddError(input);
+					error++;
+				}
+			} else if (input.name == "phone") {
+				if (!phoneTest(input)) {
+					formAddError(input);
+					error++;
+				}
+			} else if (input.name == "privacy") {
+				if (!input.checked) {
+					formAddError(input);
+					error++;
+				}
 			}
-		});
-
+		}
 		return error;
 	}
 
 	function formAddError(input) {
-		input.classList.add("_error");
 		input.parentElement.classList.add("_error");
-		// input.closest('.form')?.querySelector('.form__error-message')?.classList.add('visible');
+		input.classList.add("_error");
 	}
 
 	function formRemoveError(input) {
-		input.classList.remove("_error");
 		input.parentElement.classList.remove("_error");
-		// const form = input.closest('.form');
-		// if (form && !form.querySelector('._error')) {
-		// 	form.querySelector('.form__error-message')?.classList.remove('visible');
-		// }
+		input.classList.remove("_error");
 	}
 
-	function emailTest(email) {
-		const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-		return re.test(String(email).toLowerCase());
+	function emailTest(input) {
+		const re =
+			/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		let result = re.test(String(input.value).toLowerCase());
+		return result;
 	}
 
-	function phoneTest(phone) {
-		const cleaned = phone.replace(/\D/g, '');
-		return cleaned.length >= 10 && /^[1-9]\d{9,14}$/.test(cleaned);
+	function phoneTest(input) {
+		let value = input.value.length > 0 ? input.value.match(/\d/g).join('') : input.value;
+
+		return /^\d[\d\(\)\-]{4,14}\d$/g.test(value);
 	}
 
 
-	function closeAndShowSuccessModal() {
-		if (Fancybox.getInstance()) {
-			Fancybox.close(true);
-		}
-		Fancybox.show([{ src: "#success", type: "inline" }], {
-			dragToClose: false,
-			closeButton: false,
-		});
+	function getSucces(form) {
+		const formBody = form.closest('[data-form-body]');
+		const succesBlock = formBody.parentElement.querySelector('[data-form-succes]');
+
+		formBody.classList.add('hidden');
+		succesBlock.classList.add('visible');
+
 	}
+
+	// function succes(result) {
+	// 	if (document.querySelector(".popup.open")) {
+	// 		document.querySelector(".popup.open").classList.remove("open");
+	// 	}
+
+	// 	const modalStatus = document.getElementById("modal-form");
+	// 	modalStatus.classList.add("open");
+	// 	if (!document.body.classList.contains('lock')) {
+	// 		bodyLocking();
+	// 	}
+
+	// 	const modalTitle = modalStatus.querySelector(".popup-status__title");
+	// 	const modalSubtitle = modalStatus.querySelector(".popup-status__text");
+
+	// 	modalTitle.innerHTML = result.header ? `<div class="popup-status__icon icon-check"></div>` + result.header : `<div class="popup-status__icon icon-check"></div>` + "Спасибо!";
+	// 	modalSubtitle.innerHTML = result.message ? result.message : "Наш специалист свяжется с Вами";
+	// }
+
+	// function fail(message) {
+	// 	if (document.querySelector(".popup.open")) {
+	// 		document.querySelector(".popup.open").classList.remove("open");
+	// 	}
+
+	// 	const modalStatus = document.getElementById("modal-form");
+	// 	modalStatus.classList.add("open");
+	// 	if (!document.body.classList.contains('lock')) {
+	// 		bodyLocking();
+	// 	}
+
+	// 	const modalTitle = modalStatus.querySelector(".popup-status__title");
+	// 	const modalSubtitle = modalStatus.querySelector(".popup-status__text");
+
+	// 	modalTitle.innerHTML = message ? "Ошибка" : "404/500";
+	// 	modalSubtitle.innerHTML = message ? message : "Пожалуйста, попробуйте снова";
+	// }
 };
