@@ -119,43 +119,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    const sliderOptions = {
-        slidesPerView: "auto",
-        spaceBetween: 10,
-        watchOverflow: true,
-        grabCursor: true,
-        breakpoints: {
-            767.98: {
-                spaceBetween: 20,
-            }
+    // const sliderOptions = {
+    //     slidesPerView: "auto",
+    //     spaceBetween: 10,
+    //     watchOverflow: true,
+    //     grabCursor: true,
+    //     breakpoints: {
+    //         767.98: {
+    //             spaceBetween: 20,
+    //         }
+    //     }
+    // };
+
+    // if (document.querySelector('.info__slider')) {
+    //     new Swiper('.info__slider', sliderOptions)
+    // }
+
+    // if (document.querySelector('.reviews__slider')) {
+    //     new Swiper('.reviews__slider', sliderOptions)
+    // }
+
+    // if (document.querySelector('.benefits__slider')) {
+    //     new Swiper('.benefits__slider', sliderOptions)
+    // }
+
+    // if (document.querySelector('.articles__slider')) {
+    //     new Swiper('.articles__slider', {
+    //         slidesPerView: "auto",
+    //         spaceBetween: 20,
+    //         watchOverflow: true,
+    //         grabCursor: true,
+    //     })
+    // }
+
+    // if (document.querySelector('.partners__slider')) {
+    //     new Swiper('.partners__slider', sliderOptions)
+    // }
+
+
+    document.addEventListener('scroll', (e) => {
+        if (scrollY > 0) {
+            document.querySelector('.header').classList.add('scroll');
+        } else {
+            document.querySelector('.header').classList.remove('scroll');
         }
-    };
-
-    if (document.querySelector('.info__slider')) {
-        new Swiper('.info__slider', sliderOptions)
-    }
-
-    if (document.querySelector('.reviews__slider')) {
-        new Swiper('.reviews__slider', sliderOptions)
-    }
-
-    if (document.querySelector('.benefits__slider')) {
-        new Swiper('.benefits__slider', sliderOptions)
-    }
-
-    if (document.querySelector('.articles__slider')) {
-        new Swiper('.articles__slider', {
-            slidesPerView: "auto",
-            spaceBetween: 20,
-            watchOverflow: true,
-            grabCursor: true,
-        })
-    }
-
-    if (document.querySelector('.partners__slider')) {
-        new Swiper('.partners__slider', sliderOptions)
-    }
-
+    })
 
 
 });

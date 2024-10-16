@@ -146,21 +146,34 @@
 	user-select: none;
 	white-space: nowrap;
 	text-align: center;
+	font-family: $font-geologica;
+	font-size: 1.125rem;
 	gap: 0.25rem;
-	font-size: 1rem;
-	font-weight: 600;
-	padding: 0.74rem 1.56rem;
-	text-transform: uppercase;
-	border-radius: 0.5rem;
-	& small {
-		opacity: 0.8;
+	font-weight: 500;
+	padding: 1.25rem 3.85rem;
+	box-shadow: 0 0 rem(20.9) 0 rgba(255, 255, 255, 0.11) inset;
+	border-radius: 0.4375rem;
+	&::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		border-radius: 0.4375rem;
+		transition: opacity 0.3s ease 0s;
+		pointer-events: none;
 	}
-	&.btn-green {
-		background: #a8cc32;
+	&.btn-secondary {
+		background: #14ae5c;
 		color: #fff;
+		&::after {
+			background: linear-gradient(87deg, #14ae5c 8.98%, #22be6b 94.96%);
+		}
 		@media (any-hover: hover) {
 			&:hover {
-				background: darken($color: #a8cc32, $amount: 10);
+				background: darken($color: #14ae5c, $amount: 10);
 			}
 		}
 	}
@@ -173,12 +186,15 @@
 			}
 		}
 	}
-	&.btn-red {
-		background: #c61a03;
+	&.btn-danger {
 		color: #fff;
+		background: #c12727;
+		&::after {
+			background: linear-gradient(87deg, #c12727 8.98%, #d23232 94.96%);
+		}
 		@media (any-hover: hover) {
 			&:hover {
-				background: darken($color: #c61a03, $amount: 10);
+				background: darken($color: #c12727, $amount: 10);
 			}
 		}
 	}
@@ -188,6 +204,13 @@
 		color: #fff;
 		background: #dfe0e1;
 		pointer-events: none;
+	}
+	@media (any-hover: hover) {
+		&:hover {
+			&::after {
+				opacity: 0;
+			}
+		}
 	}
 }
 
