@@ -1,6 +1,7 @@
 "use strict";
 
 
+// import Swiper from "swiper";
 import * as devFunctions from "./modules/functions.js";
 
 //  init Fancybox
@@ -54,6 +55,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (target.classList.contains('menu__btn')) {
             target.classList.toggle('open');
             target.nextElementSibling.classList.toggle('open');
+        }
+
+        if (target.classList.contains('heading__caption')) {
+            target.classList.toggle('active');
+            target.nextElementSibling.slideToggle()
         }
 
 
@@ -118,6 +124,20 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 400)
 
     }
+
+    if (document.querySelector('.download__slider')) {
+        new Swiper('.download__slider-content', {
+            slidesPerView: 4,
+            spaceBetween: 40,
+            watchSlidesProgress: true,
+            navigation: {
+                nextEl: ".download__next",
+                prevEl: ".download__prev",
+            }
+        })
+    }
+
+
 
     // const sliderOptions = {
     //     slidesPerView: "auto",

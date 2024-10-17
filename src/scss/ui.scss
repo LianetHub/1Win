@@ -25,6 +25,12 @@
 	font-weight: 700;
 }
 
+.title-md {
+	font-size: 2rem;
+	font-weight: 700;
+	line-height: 125%;
+}
+
 .font-normal {
 	font-weight: 400;
 }
@@ -114,6 +120,55 @@
 	}
 }
 
+.table {
+	overflow-y: auto;
+	border-radius: 0.625rem;
+	background: #fff;
+	box-shadow: 0 rem(2) rem(2) 0 rgba(0, 0, 0, 0.15);
+	& table {
+		font-family: $font-geologica;
+		width: 100%;
+		min-width: rem(1170);
+	}
+	& thead {
+		& tr {
+			background: #333;
+			color: #fff;
+			text-align: left;
+			& th {
+				padding: 1.15rem 1.5rem;
+				&:first-child {
+					border-top-left-radius: 0.625rem;
+				}
+				&:last-child {
+					border-top-right-radius: 0.625rem;
+				}
+			}
+		}
+	}
+	& tbody {
+		font-size: 1rem;
+		font-weight: 300;
+		line-height: 125%;
+		& td {
+			padding: 0.975rem 1.5rem;
+			vertical-align: top;
+			&:first-child {
+				width: 28.5%;
+			}
+		}
+		& tr {
+			&:not(:last-child) {
+				border-bottom: rem(1) solid rgba($color: #000000, $alpha: 0.03);
+			}
+		}
+	}
+	& ul {
+		list-style: disc;
+		padding-left: 1em;
+	}
+}
+
 // .pc-only {
 // 	@media (max-width: $md4) {
 // 		display: none;
@@ -171,6 +226,44 @@
 // 		transform: translate(-50%, -50%) rotate(360deg);
 // 	}
 // }
+
+.swiper-button-next,
+.swiper-button-prev {
+	width: 2.9375rem;
+	height: 2.9375rem;
+	background: #fff;
+	color: #38a8fa;
+	border-radius: 50%;
+	box-shadow: 0 rem(2) rem(2) 0 rgba(0, 0, 0, 0.15);
+	&::after {
+		display: none;
+	}
+	&::before {
+		@extend %ic, .icon-chevron;
+		font-size: 0.75rem;
+	}
+	@media (any-hover: hover) {
+		&:hover {
+			color: #fff;
+			background: linear-gradient(0deg, #0167ca -13.79%, #38a8fa 102.34%);
+		}
+	}
+}
+
+.swiper-button-prev {
+	padding-right: 0.5rem;
+	left: 0;
+	&::before {
+		transform: rotate(90deg);
+	}
+}
+.swiper-button-next {
+	padding-left: 0.5rem;
+	right: 0;
+	&::before {
+		transform: rotate(-90deg);
+	}
+}
 
 //============ ОБЩИЕ ЭЛЕМЕНТЫ ============
 

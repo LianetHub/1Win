@@ -9,24 +9,16 @@
 @font-face {
   font-family: "Geologica";
   font-display: swap;
-  src: url("../fonts/Geologica-Light.woff") format("woff"), url("../fonts/Geologica-Light.woff2") format("woff2");
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Geologica";
-  font-display: swap;
   src: url("../fonts/Geologica-ExtraLight.woff") format("woff"), url("../fonts/Geologica-ExtraLight.woff2") format("woff2");
   font-weight: 200;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "icons";
+  font-family: "Geologica";
   font-display: swap;
-  src: url("../fonts/icons.woff") format("woff"), url("../fonts/icons.woff2") format("woff2");
-  font-weight: 400;
+  src: url("../fonts/Geologica-SemiBold.woff") format("woff"), url("../fonts/Geologica-SemiBold.woff2") format("woff2");
+  font-weight: 600;
   font-style: normal;
 }
 
@@ -34,6 +26,22 @@
   font-family: "Geologica";
   font-display: swap;
   src: url("../fonts/Geologica-Regular.woff") format("woff"), url("../fonts/Geologica-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Geologica";
+  font-display: swap;
+  src: url("../fonts/Geologica-Light.woff") format("woff"), url("../fonts/Geologica-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "icons";
+  font-display: swap;
+  src: url("../fonts/icons.woff") format("woff"), url("../fonts/icons.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
@@ -49,15 +57,15 @@
 @font-face {
   font-family: "Geologica";
   font-display: swap;
-  src: url("../fonts/Geologica-SemiBold.woff") format("woff"), url("../fonts/Geologica-SemiBold.woff2") format("woff2");
-  font-weight: 600;
+  src: url("../fonts/Geologica-Medium.woff") format("woff"), url("../fonts/Geologica-Medium.woff2") format("woff2");
+  font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Geologica";
+  font-family: "Montserrat";
   font-display: swap;
-  src: url("../fonts/Geologica-Medium.woff") format("woff"), url("../fonts/Geologica-Medium.woff2") format("woff2");
+  src: url("../fonts/Montserrat-Medium.woff") format("woff"), url("../fonts/Montserrat-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
 }
@@ -78,15 +86,9 @@
   font-style: normal;
 }
 
-@font-face {
-  font-family: "Montserrat";
-  font-display: swap;
-  src: url("../fonts/Montserrat-Medium.woff") format("woff"), url("../fonts/Montserrat-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-}
-
 .heading__list-link::before,
+.swiper-button-next::before,
+.swiper-button-prev::before,
 [class^=icon-]:before,
 [class*=" icon-"]:before {
   font-family: "icons";
@@ -109,7 +111,9 @@
   content: "\e900";
 }
 
-.icon-chevron:before {
+.icon-chevron:before,
+.swiper-button-next:before,
+.swiper-button-prev:before {
   content: "\e901";
 }
 
@@ -298,6 +302,12 @@ body.lock {
   font-weight: 700;
 }
 
+.title-md {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 125%;
+}
+
 .font-normal {
   font-weight: 400;
 }
@@ -401,6 +411,105 @@ body.lock {
 [data-copy] .tooltip.visible {
   opacity: 1;
   visibility: visible;
+}
+
+.table {
+  overflow-y: auto;
+  border-radius: 0.625rem;
+  background: #fff;
+  -webkit-box-shadow: 0 0.125rem 0.125rem 0 rgba(0, 0, 0, 0.15);
+          box-shadow: 0 0.125rem 0.125rem 0 rgba(0, 0, 0, 0.15);
+}
+
+.table table {
+  font-family: "Geologica";
+  width: 100%;
+  min-width: 73.125rem;
+}
+
+.table thead tr {
+  background: #333;
+  color: #fff;
+  text-align: left;
+}
+
+.table thead tr th {
+  padding: 1.15rem 1.5rem;
+}
+
+.table thead tr th:first-child {
+  border-top-left-radius: 0.625rem;
+}
+
+.table thead tr th:last-child {
+  border-top-right-radius: 0.625rem;
+}
+
+.table tbody {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 125%;
+}
+
+.table tbody td {
+  padding: 0.975rem 1.5rem;
+  vertical-align: top;
+}
+
+.table tbody td:first-child {
+  width: 28.5%;
+}
+
+.table tbody tr:not(:last-child) {
+  border-bottom: 0.0625rem solid rgba(0, 0, 0, 0.03);
+}
+
+.table ul {
+  list-style: disc;
+  padding-left: 1em;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  width: 2.9375rem;
+  height: 2.9375rem;
+  background: #fff;
+  color: #38a8fa;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 0.125rem 0.125rem 0 rgba(0, 0, 0, 0.15);
+          box-shadow: 0 0.125rem 0.125rem 0 rgba(0, 0, 0, 0.15);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none;
+}
+
+.swiper-button-next::before,
+.swiper-button-prev::before {
+  font-size: 0.75rem;
+}
+
+.swiper-button-prev {
+  padding-right: 0.5rem;
+  left: 0;
+}
+
+.swiper-button-prev::before {
+  -webkit-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.swiper-button-next {
+  padding-left: 0.5rem;
+  right: 0;
+}
+
+.swiper-button-next::before {
+  -webkit-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+          transform: rotate(-90deg);
 }
 
 .hidden {
@@ -661,6 +770,15 @@ body.lock {
   color: #fff;
 }
 
+.btn.btn-dark {
+  color: #fff;
+  background: #030619;
+}
+
+.btn.btn-dark::after {
+  background: linear-gradient(87deg, #030619 8.98%, #1d213a 94.96%);
+}
+
 .btn.btn-danger {
   color: #fff;
   background: #c12727;
@@ -668,6 +786,11 @@ body.lock {
 
 .btn.btn-danger::after {
   background: linear-gradient(87deg, #c12727 8.98%, #d23232 94.96%);
+}
+
+.btn.btn-sm {
+  font-size: 1rem;
+  padding: 0.6rem 1.65rem;
 }
 
 .btn:disabled,
@@ -1280,6 +1403,7 @@ body.lock {
 }
 
 .promo__info-caption {
+  position: relative;
   color: #3f3131;
   font-size: 1.125rem;
   font-weight: 700;
@@ -1292,10 +1416,12 @@ body.lock {
 .promo__info-caption::before {
   content: "";
   position: absolute;
-  top: 0;
+  top: 50%;
   left: 0;
-  width: 100%;
-  height: 100%;
+  border-radius: 0rem 0.3125rem 0.3125rem 0rem;
+  background: #38a8fa;
+  width: 0.25rem;
+  height: 1.5625rem;
 }
 
 .promo__info-list {
@@ -1355,6 +1481,7 @@ body.lock {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  cursor: pointer;
 }
 
 .heading__caption::before {
@@ -1375,8 +1502,11 @@ body.lock {
           transform: rotate(180deg);
 }
 
-.heading__list {
+.heading__body {
   margin-top: 3.08rem;
+}
+
+.heading__list {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[2];
@@ -1410,6 +1540,299 @@ body.lock {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.download {
+  padding: 4.37rem 0 2rem;
+  background: url("../img/download/decor.svg") center/100% auto no-repeat, url("../img/logo-decor.svg") 96% 0/21.625rem 8.75rem no-repeat;
+}
+
+.download__desc {
+  margin-top: 1.06rem;
+  font-family: "Geologica";
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 125%;
+}
+
+.download__slider {
+  margin-top: 0.6875rem;
+  position: relative;
+}
+
+.download__slider-content {
+  padding: 3.5625rem;
+}
+
+.download__slide {
+  height: auto;
+  border-radius: 1.625rem;
+  overflow: hidden;
+  border: 0.125rem solid rgba(0, 0, 0, 0.07);
+  -webkit-box-shadow: 0 0.6875rem 3.0125rem 0 rgba(208, 212, 216, 0.44), 0rem 0rem 1.30625rem 0rem rgba(255, 255, 255, 0.11) inset;
+          box-shadow: 0 0.6875rem 3.0125rem 0 rgba(208, 212, 216, 0.44), 0rem 0rem 1.30625rem 0rem rgba(255, 255, 255, 0.11) inset;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.download__slide.swiper-slide-fully-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.about {
+  padding: 3rem 0 2.5rem;
+}
+
+.about__desc {
+  margin-top: 1rem;
+  font-family: "Geologica";
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 125%;
+  max-width: 52rem;
+  opacity: 0.9;
+}
+
+.about__table {
+  margin-top: 1.63rem;
+}
+
+.about__more {
+  margin-top: 1.88rem;
+}
+
+.popular {
+  padding: 2rem 0;
+}
+
+.popular__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.popular__btn::before {
+  margin-left: 0.38rem;
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+  font-size: 0.65em;
+}
+
+.popular__filters {
+  margin-top: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1.12rem;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.popular__filter-input:checked + .popular__filter-btn {
+  border-radius: 6.25rem;
+  background: #38a8fa;
+  color: #fff;
+}
+
+.popular__filter-btn {
+  border-radius: 6.25rem;
+  border: 0.125rem solid rgba(0, 0, 0, 0.03);
+  background: #fff;
+  padding: 0.88rem 3.38rem;
+  font-family: "Geologica";
+  font-weight: 300;
+  display: block;
+  -webkit-box-shadow: 0 0.125rem 0.125rem 0 rgba(0, 0, 0, 0.15), 0 0 1.30625rem 0px rgba(255, 255, 255, 0.11) inset;
+          box-shadow: 0 0.125rem 0.125rem 0 rgba(0, 0, 0, 0.15), 0 0 1.30625rem 0px rgba(255, 255, 255, 0.11) inset;
+  -webkit-transition: color 0.3s ease 0s, background-color 0.3s ease 0s;
+  transition: color 0.3s ease 0s, background-color 0.3s ease 0s;
+  cursor: pointer;
+}
+
+.popular__items {
+  margin-top: 2rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.88rem;
+}
+
+.popular__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: #fff;
+  border-radius: 1rem;
+  border: 0.0625rem solid rgba(0, 0, 0, 0.03);
+  -webkit-box-shadow: 0 0.125rem 0.125rem 0 rgba(0, 0, 0, 0.15);
+          box-shadow: 0 0.125rem 0.125rem 0 rgba(0, 0, 0, 0.15);
+}
+
+.popular__item-image {
+  background: rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+  border-radius: 1rem;
+  margin: -0.0625rem -0.0625rem 0;
+  height: 0;
+  position: relative;
+  padding-bottom: 61.0909090909%;
+}
+
+.popular__item-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 1rem;
+}
+
+.popular__item-name {
+  text-align: center;
+  font-family: "Geologica";
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 150%;
+  padding: 1.25rem 1.25rem 1.875rem 1.25rem;
+}
+
+.development {
+  padding: 2rem 0;
+}
+
+.development__body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 5.25rem;
+}
+
+.development__content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+}
+
+.development__title {
+  max-width: 32.5rem;
+}
+
+.development__desc {
+  margin-top: 1.25rem;
+  font-family: "Geologica";
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 125%;
+}
+
+.development__list {
+  margin-top: 1rem;
+  font-family: "Geologica";
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 125%;
+}
+
+.development__list li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.5rem;
+}
+
+.development__list li::before {
+  content: "";
+  width: 1.25rem;
+  height: 0.125rem;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  border-radius: 6.25rem;
+  display: block;
+  background: currentColor;
+}
+
+.development__list li:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+.development__image {
+  border-radius: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  background: #fff;
+  position: relative;
+  aspect-ratio: 1.0723404255;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  width: 31.5rem;
+}
+
+.development__image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 1rem;
+}
+
+.start {
+  padding: 3rem 0;
+}
+
+.start__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  padding: 4rem 1rem;
+  border-radius: 1.25rem;
+  background: url("../img/start-decor.svg") center/cover no-repeat, #fff;
+}
+
+.start__desc {
+  margin-top: 1.25rem;
+  text-align: center;
+  font-family: "Geologica";
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 125%;
+  max-width: 62.5625rem;
+  opacity: 0.9;
+}
+
+.start__desc a {
+  color: #38a8fa;
+  text-decoration: underline;
+}
+
+.start__desc p:not(:last-child) {
+  margin-bottom: 1.25rem;
 }
 
 @media (min-width: 575.98px) {
@@ -1627,12 +2050,23 @@ body.lock {
 }
 
 @media (any-hover: hover) {
+  .swiper-button-next:hover,
+  .swiper-button-prev:hover {
+    color: #fff;
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(-13.79%, #0167ca), color-stop(102.34%, #38a8fa));
+    background: linear-gradient(0deg, #0167ca -13.79%, #38a8fa 102.34%);
+  }
+
   .btn.btn-secondary:hover {
     background: #0f8044;
   }
 
   .btn.btn-primary:hover {
     background: #0c76dd;
+  }
+
+  .btn.btn-dark:hover {
+    background: black;
   }
 
   .btn.btn-danger:hover {
@@ -1678,6 +2112,10 @@ body.lock {
 
   .heading__list-link:hover {
     color: #0167ca;
+  }
+
+  .popular__filter-btn:hover {
+    color: #38a8fa;
   }
 }
 

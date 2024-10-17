@@ -186,6 +186,18 @@
 			}
 		}
 	}
+	&.btn-dark {
+		color: #fff;
+		background: #030619;
+		&::after {
+			background: linear-gradient(87deg, #030619 8.98%, #1d213a 94.96%);
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				background: darken($color: #030619, $amount: 10);
+			}
+		}
+	}
 	&.btn-danger {
 		color: #fff;
 		background: #c12727;
@@ -197,6 +209,10 @@
 				background: darken($color: #c12727, $amount: 10);
 			}
 		}
+	}
+	&.btn-sm {
+		font-size: 1rem;
+		padding: 0.6rem 1.65rem;
 	}
 	&:disabled,
 	&[aria-disabled='true'] {
