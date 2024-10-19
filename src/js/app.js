@@ -153,13 +153,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (document.querySelector('.download__slider')) {
         new Swiper('.download__slider-content', {
-            slidesPerView: 4,
-            spaceBetween: 40,
+            slidesPerView: "auto",
+            spaceBetween: 30,
             watchSlidesProgress: true,
             navigation: {
                 nextEl: ".download__next",
                 prevEl: ".download__prev",
+            },
+            breakpoints: {
+                1279.98: {
+                    spaceBetween: 40,
+                    slidesPerView: 4,
+                }
             }
+        })
+    }
+    if (document.querySelector('.popular__filters')) {
+        new Swiper('.popular__filters', {
+            slidesPerView: "auto",
+            spaceBetween: 18,
+            watchSlidesProgress: true,
+
         })
     }
 

@@ -216,8 +216,11 @@
 		}
 	}
 	&.btn-sm {
-		font-size: 1rem;
+		font-size: 0.875rem;
 		padding: 0.6rem 1.65rem;
+		@media (min-width: $md5) {
+			font-size: 1rem;
+		}
 	}
 	&.btn-md {
 		padding: 1.25rem;
