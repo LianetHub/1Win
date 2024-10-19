@@ -33,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (target.closest(".icon-menu") || target.classList.contains('menu')) {
             getMenu();
-
             hideLangChoising();
         }
 
@@ -60,6 +59,33 @@ document.addEventListener("DOMContentLoaded", () => {
         if (target.classList.contains('heading__caption')) {
             target.classList.toggle('active');
             target.nextElementSibling.slideToggle()
+        }
+
+        if (target.matches('.about__platform-tab')) {
+
+            target.classList.add('active');
+            Array.from(target.parentElement.children).forEach(sibling => {
+                if (sibling !== target) {
+                    sibling.classList.remove('active');
+                }
+            });
+
+            const tabs = document.querySelectorAll('.about__platform-tab');
+            const blocks = document.querySelectorAll('.about__platform-block');
+            const index = Array.prototype.indexOf.call(tabs, target);
+
+            blocks.forEach((block, i) => {
+                if (i === index) {
+                    block.classList.add('active');
+                } else {
+                    block.classList.remove('active');
+                }
+            });
+        }
+
+        if (target.closest('.faq__item-caption')) {
+            target.closest('.faq__item-caption').classList.toggle('active');
+            target.closest('.faq__item-caption').nextElementSibling.slideToggle()
         }
 
 
@@ -133,6 +159,22 @@ document.addEventListener("DOMContentLoaded", () => {
             navigation: {
                 nextEl: ".download__next",
                 prevEl: ".download__prev",
+            }
+        })
+    }
+
+    if (document.querySelector('.rating__slider')) {
+        new Swiper('.rating__slider', {
+            slidesPerView: 1,
+            spaceBetween: 28,
+            navigation: {
+                nextEl: ".rating__next",
+                prevEl: ".rating__prev",
+            },
+            breakpoints: {
+                767.98: {
+                    slidesPerView: 2,
+                }
             }
         })
     }
