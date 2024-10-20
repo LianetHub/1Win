@@ -18,15 +18,15 @@
 	<link rel="manifest" href="/site.webmanifest">
 	<!-- favicon -->
 	<!-- plugnis -->
-	<link rel="stylesheet" href="css/libs/fancybox.css?_v=20241019120522">
-	<link rel="stylesheet" href="css/libs/swiper-bundle.min.css?_v=20241019120522">
+	<link rel="stylesheet" href="css/libs/fancybox.css?_v=20241020200124">
+	<link rel="stylesheet" href="css/libs/swiper-bundle.min.css?_v=20241020200124">
 	<!-- plugnis -->
-	<link rel="stylesheet" href="css/reset.min.css?_v=20241019120522">
-	<link rel="stylesheet" href="css/style.min.css?_v=20241019120522">
+	<link rel="stylesheet" href="css/reset.min.css?_v=20241020200124">
+	<link rel="stylesheet" href="css/style.min.css?_v=20241020200124">
 </head>
 
 <body>
-	<section class="wrapper">
+	<div class="wrapper">
 		<header class="header">
 			<div class="header__container">
 				<a href="/" class="header__logo">
@@ -135,26 +135,26 @@
 							<img src="img/logo.svg" alt="logo">
 						</a>
 						<div class="menu__lang-caption title"> Выберите язык </div>
-						<ul class="menu__lang-list">
-							<li data-lang="RU" class="menu__lang-item selected">
-								<div class="menu__lang-icon">
+						<div class="menu__lang-list">
+							<a href="" class="menu__lang-item selected">
+								<span class="menu__lang-icon">
 									<img src="img/flags/rus.svg" alt="rus">
-								</div>
-								<div class="menu__lang-body">
-									<div class="menu__lang-value"> Русский </div>
-									<div class="menu__lang-translate"> Русский </div>
-								</div>
-							</li>
-							<li data-lang="EN" class="menu__lang-item">
-								<div class="menu__lang-icon">
+								</span>
+								<span class="menu__lang-body">
+									<span class="menu__lang-value"> Русский </span>
+									<span class="menu__lang-translate"> Русский </span>
+								</span>
+							</a>
+							<a href="" class="menu__lang-item">
+								<span class="menu__lang-icon">
 									<img src="img/flags/eng.svg" alt="eng">
-								</div>
-								<div class="menu__lang-body">
-									<div class="menu__lang-value"> English </div>
-									<div class="menu__lang-translate"> Английский </div>
-								</div>
-							</li>
-						</ul>
+								</span>
+								<span class="menu__lang-body">
+									<span class="menu__lang-value"> English </span>
+									<span class="menu__lang-translate"> Английский </span>
+								</span>
+							</a>
+						</div>
 					</div>
 				</div>
 				<button type="button" aria-label="open menu" class="header__menu-btn icon-menu">
@@ -887,7 +887,7 @@
 			</div>
 			<div class="about">
 				<div class="about__container">
-					<h2 class="about__title title-sm"> Технические характеристики оборудования Android </h2>
+					<h3 class="about__title title-sm"> Технические характеристики оборудования Android </h3>
 					<p class="about__desc"> Are you already looking forward to sporting events? Before you start betting here, familiarize yourself with the bookmaker and the services provided here. </p>
 					<div class="about__table table">
 						<table>
@@ -1122,7 +1122,7 @@
 							</div>
 							<div class="about__platform-blocks">
 								<div class="about__platform-block active">
-									<h2 class="about__platform-title title-sm">4raBet Android apk</h2>
+									<h3 class="about__platform-title title-sm">4raBet Android apk</h3>
 									<p> To place bets on numerous sports through your Android phone on 4raBet: </p>
 									<ol>
 										<li>Open the website.&nbsp;First, look for the .apk-file on the website.</li>
@@ -1134,7 +1134,7 @@
 									<a href="" class="about__platform-btn btn btn-primary">4raBet APK Download</a>
 								</div>
 								<div class="about__platform-block">
-									<h2 class="about__platform-title title-sm">4raBet iOS app</h2>
+									<h3 class="about__platform-title title-sm">4raBet iOS app</h3>
 									<p> To place bets on numerous sports through your Android phone on 4raBet: </p>
 									<ol>
 										<li>Open the website.&nbsp;First, look for the .apk-file on the website.</li>
@@ -1146,7 +1146,7 @@
 									<a href="" class="about__platform-btn btn btn-primary">4raBet APK Download</a>
 								</div>
 								<div class="about__platform-block">
-									<h2 class="about__platform-title title-sm">4raBet PC app</h2>
+									<h3 class="about__platform-title title-sm">4raBet PC app</h3>
 									<p> To place bets on numerous sports through your Android phone on 4raBet: </p>
 									<ol>
 										<li>Open the website.&nbsp;First, look for the .apk-file on the website.</li>
@@ -1598,7 +1598,7 @@
 					<div class="desc__cards">
 						<div class="desc__card">
 							<div class="desc__card-body">
-								<div class="desc__card-caption title-sm">Let’s talk about what the user interface of 4raBet bookie contains:</div>
+								<h3 class="desc__card-caption title-sm">Let’s talk about what the user interface of 4raBet bookie contains:</h3>
 								<div class="desc__card-text">
 									<p> The 4rabet site features a variety of tournaments with the ability to bet on individual matches and leagues. </p>
 									<p> It is possible to follow the current matches in real time and try to catch high odds on various events. </p>
@@ -1619,7 +1619,7 @@
 								</picture>
 							</div>
 							<div class="desc__card-content">
-								<div class="desc__card-caption title-sm">4rabet Contact Methods</div>
+								<h3 class="desc__card-caption title-sm">4rabet Contact Methods</h3>
 								<div class="desc__card-text">
 									<p> You can&nbsp;<a href="">contact</a>&nbsp;technical support in the following ways </p>
 								</div>
@@ -1735,9 +1735,9 @@
 					<h2 class="faq__title title"> FAQs </h2>
 					<ul class="faq__list">
 						<li class="faq__item">
-							<button type="button" class="faq__item-caption icon-chevron">
+							<h3 class="faq__item-caption icon-chevron">
 								<span>4rabet Contact Methods</span>
-							</button>
+							</h3>
 							<div class="faq__item-answer">
 								<p>There are more than 200,000 active players on the site per week. Considering that the site is relatively young among competitors, this is a very strong argument.</p>
 								<ol>
@@ -1749,65 +1749,65 @@
 							</div>
 						</li>
 						<li class="faq__item">
-							<button type="button" class="faq__item-caption icon-chevron">
+							<h3 class="faq__item-caption icon-chevron">
 								<span>Is there any pre-betting or live betting on the site?</span>
-							</button>
+							</h3>
 							<div class="faq__item-answer">
 								<p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur aperiam dolores culpa molestias inventore, sit architecto commodi recusandae suscipit doloremque tempora numquam odit nihil voluptate facilis exercitationem adipisci vel necessitatibus? </p>
 							</div>
 						</li>
 						<li class="faq__item">
-							<button type="button" class="faq__item-caption icon-chevron">
+							<h3 class="faq__item-caption icon-chevron">
 								<span>Which betting markets are relevant on this site?</span>
-							</button>
+							</h3>
 							<div class="faq__item-answer">
 								<p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur aperiam dolores culpa molestias inventore, sit architecto commodi recusandae suscipit doloremque tempora numquam odit nihil voluptate facilis exercitationem adipisci vel necessitatibus? </p>
 							</div>
 						</li>
 						<li class="faq__item">
-							<button type="button" class="faq__item-caption icon-chevron">
+							<h3 class="faq__item-caption icon-chevron">
 								<span>Will it be difficult for me to use the site?</span>
-							</button>
+							</h3>
 							<div class="faq__item-answer">
 								<p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur aperiam dolores culpa molestias inventore, sit architecto commodi recusandae suscipit doloremque tempora numquam odit nihil voluptate facilis exercitationem adipisci vel necessitatibus? </p>
 							</div>
 						</li>
 						<li class="faq__item">
-							<button type="button" class="faq__item-caption icon-chevron">
+							<h3 class="faq__item-caption icon-chevron">
 								<span>Would this be a good choice?</span>
-							</button>
+							</h3>
 							<div class="faq__item-answer">
 								<p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur aperiam dolores culpa molestias inventore, sit architecto commodi recusandae suscipit doloremque tempora numquam odit nihil voluptate facilis exercitationem adipisci vel necessitatibus? </p>
 							</div>
 						</li>
 						<li class="faq__item">
-							<button type="button" class="faq__item-caption icon-chevron">
+							<h3 class="faq__item-caption icon-chevron">
 								<span>Is there a live casino?</span>
-							</button>
+							</h3>
 							<div class="faq__item-answer">
 								<p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur aperiam dolores culpa molestias inventore, sit architecto commodi recusandae suscipit doloremque tempora numquam odit nihil voluptate facilis exercitationem adipisci vel necessitatibus? </p>
 							</div>
 						</li>
 						<li class="faq__item">
-							<button type="button" class="faq__item-caption icon-chevron">
+							<h3 class="faq__item-caption icon-chevron">
 								<span>Is 4raBet Safe?</span>
-							</button>
+							</h3>
 							<div class="faq__item-answer">
 								<p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur aperiam dolores culpa molestias inventore, sit architecto commodi recusandae suscipit doloremque tempora numquam odit nihil voluptate facilis exercitationem adipisci vel necessitatibus? </p>
 							</div>
 						</li>
 						<li class="faq__item">
-							<button type="button" class="faq__item-caption icon-chevron">
+							<h3 class="faq__item-caption icon-chevron">
 								<span>Can I Play on other GEO?</span>
-							</button>
+							</h3>
 							<div class="faq__item-answer">
 								<p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur aperiam dolores culpa molestias inventore, sit architecto commodi recusandae suscipit doloremque tempora numquam odit nihil voluptate facilis exercitationem adipisci vel necessitatibus? </p>
 							</div>
 						</li>
 						<li class="faq__item">
-							<button type="button" class="faq__item-caption icon-chevron">
+							<h3 class="faq__item-caption icon-chevron">
 								<span>Does the bookmaker support Indian rupees?</span>
-							</button>
+							</h3>
 							<div class="faq__item-answer">
 								<p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur aperiam dolores culpa molestias inventore, sit architecto commodi recusandae suscipit doloremque tempora numquam odit nihil voluptate facilis exercitationem adipisci vel necessitatibus? </p>
 							</div>
@@ -2077,11 +2077,11 @@
 				<div class="footer__copy"> 4raBet. Copyright © 2018 - 2024 </div>
 			</div>
 		</footer> <!-- plugnis -->
-		<script src="js/libs/fancybox.umd.js?_v=20241019120522"></script>
-		<script src="js/libs/swiper-bundle.min.js?_v=20241019120522"></script>
+		<script src="js/libs/fancybox.umd.js?_v=20241020200124"></script>
+		<script src="js/libs/swiper-bundle.min.js?_v=20241020200124"></script>
 		<!-- plugnis -->
-		<script src="js/app.min.js?_v=20241019120522"></script>
-	</section>
+		<script src="js/app.min.js?_v=20241020200124"></script>
+	</div>
 </body>
 
 </html>

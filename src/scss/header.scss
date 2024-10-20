@@ -370,14 +370,17 @@
 	}
 	// .menu__lang-body
 	&__lang-body {
+		display: block;
 	}
 	// .menu__lang-value
 	&__lang-value {
+		display: block;
 		font-size: 0.875rem;
 		font-weight: 500;
 	}
 	// .menu__lang-translate
 	&__lang-translate {
+		display: block;
 		color: #77829b;
 		font-size: 0.75rem;
 	}

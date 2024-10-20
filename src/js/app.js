@@ -47,10 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
             document.querySelector('.menu__lang-content').classList.toggle('open');
         }
 
-        if (target.closest('.menu__lang-item')) {
-            selectLanguage(target.closest('.menu__lang-item'));
-        }
-
         if (target.classList.contains('menu__btn')) {
             target.classList.toggle('open');
             target.nextElementSibling.classList.toggle('open');
@@ -62,7 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if (target.matches('.about__platform-tab')) {
-
             target.classList.add('active');
             Array.from(target.parentElement.children).forEach(sibling => {
                 if (sibling !== target) {
@@ -91,32 +86,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-    function selectLanguage(langItem) {
-        let currentLangBlock = document.querySelector('.menu__lang-current');
-        let currentFlagBlock = document.querySelector('.menu__lang-flag');
-
-        let selectedFlag = langItem.querySelector('.menu__lang-icon');
-        let selectedValue = langItem.dataset.lang;
-
-
-
-        document.querySelectorAll('.menu__lang-item').forEach(langBtn => {
-            langBtn.classList.remove('selected');
-        });
-
-        langItem.classList.add('selected');
-        currentLangBlock.innerHTML = selectedValue;
-        currentFlagBlock.innerHTML = selectedFlag.innerHTML;
-
-        hideLangChoising()
-
-    }
 
     function hideLangChoising() {
         document.querySelector('.menu__lang-btn').classList.remove('open');
         document.querySelector('.menu__lang-content').classList.remove('open')
     }
-
 
     function getMenu() {
         devFunctions.toggleLocking();
@@ -126,7 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function copyToClipboard(copyBtn) {
-
 
         let template = document.createElement('input');
         template.classList.add('hidden');

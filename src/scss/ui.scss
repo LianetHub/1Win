@@ -193,8 +193,9 @@
 	border-radius: 0.625rem;
 	background: #fff;
 	box-shadow: 0 rem(2) rem(2) 0 rgba(0, 0, 0, 0.15);
-	margin-right: rem(-20);
-	padding-right: rem(20);
+	@media (max-width: $md5) {
+		margin-right: rem(-20);
+	}
 	& table {
 		font-family: $font-geologica;
 		width: 100%;
